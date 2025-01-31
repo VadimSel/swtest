@@ -12,7 +12,7 @@ const loadCharacterDetails = async () => {
   try {
     const response = await fetchResult(characterName as string)
     if (response) {
-      characterDetail.value = response[0]
+      characterDetail.value = response.results[0]
     }
   } catch (error) {
     alert('Ошибка: ' + error)

@@ -1,19 +1,16 @@
-import type { characterType } from '../types/types'
+import type { dataTypes } from '../types/types'
 import axios from 'axios'
 
-const path = 'https://swapi.dev/api/people'
+const baseUrl = 'https://swapi.dev/api/people'
 
-export async function fetchResult(characterName?: string): Promise<characterType[] | undefined> {
+export async function fetchResult(
+  characterName?: string,
+  page?: string,
+): Promise<dataTypes | undefined> {
   try {
-    if (characterName) {
-      const response = await axios.get<{ results: characterType[] }>(
-        `${path}/?search=${characterName}`,
-      )
-      return response.data.results
-    } else {
-      const response = await axios.get<{ results: characterType[] }>(path)
-      return response.data.results
-    }
+    const path = characterName ? `${baseUrl}/?search=${characterName}` : page ? page : baseUrl
+    const response = await axios.get(path)
+    return response.data
   } catch (error) {
     alert('Ошибка: ' + error)
   }
