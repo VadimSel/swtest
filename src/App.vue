@@ -1,11 +1,7 @@
-<script setup lang="ts">
-import MyHello from './components/MyHello.vue'
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <MyHello title="Кросовки Puma" :price="9500" :isAdded="true" />
-  <!-- <MyHello is-added />
-  <MyHello /> -->
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
