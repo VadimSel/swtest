@@ -8,7 +8,7 @@ const fetchResults = ref<characterType[]>([])
 const loadCharacters = async (characterName?: string) => {
   const data = await fetchResult(characterName)
   if (data) {
-    fetchResults.value = data.results
+    fetchResults.value = data
   }
 }
 

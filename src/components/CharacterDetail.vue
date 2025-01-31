@@ -11,7 +11,9 @@ const characterDetail = ref<characterType>()
 const loadCharacterDetails = async () => {
   try {
     const response = await fetchResult(characterName as string)
-    characterDetail.value = response.results[0]
+    if (response) {
+      characterDetail.value = response[0]
+    }
   } catch (error) {
     alert('Ошибка: ' + error)
   }
@@ -20,6 +22,8 @@ const loadCharacterDetails = async () => {
 onMounted(() => {
   loadCharacterDetails()
 })
+
+console.log(characterDetail)
 </script>
 
 <template>
